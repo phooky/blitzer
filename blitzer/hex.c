@@ -45,24 +45,29 @@ int readLine( FILE* file, Chip* chip ) {
   type = readByte( &bptr );
   switch (type) {
   case 0:
-    if ( address < 0x1000 ) { /* CODE */
-      cptr = chip->code + (address/2);
-      i = length;
-    } else if (address >= 0x1000 && address < 0x1010 ) { /* ID */
-      cptr = chip->id + ((address-0x1000)/2);
-      i = length;
-    } else if (address == 0x1010) {
-      cptr = &(chip->fuse);
-      i = 2;
-    } else if (address == 0x1011) {
-      cptr = &(chip->fusex);
-      i = 2;
-    } else return 1;
-    while ( i ) {
-      *cptr = readByte( &bptr );
-      *cptr += readByte( &bptr ) << 8;
-      cptr++; i -= 2;
-    }
+      while (length)
+      {
+          if ( address < 0x1000 ) { /* CODE */
+              cptr = chip->code + (address/2);
+              i = length;
+          } else if (address >= 0x1000 && address < 0x1010 ) { /* ID */
+              cptr = chip->id + ((address-0x1000)/2);
+              i = length;
+          } else if (address == 0x1010 || address == 0x2020) {
+              cptr = &(chip->fuse);
+              i = 2;
+          } else if (address == 0x1011 || address == 0x2022) {
+              cptr = &(chip->fusex);
+              i = 2;
+          } else return 1;
+          while ( i ) {
+              *cptr = readByte( &bptr );
+              *cptr += readByte( &bptr ) << 8;
+              cptr++; i -= 2;
+              length -= 2;
+              address += 2;
+          }
+      }
     break;
   case 1:
     return 0;
