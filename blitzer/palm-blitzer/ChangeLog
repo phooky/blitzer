@@ -1,3 +1,8 @@
+2001-06-20  phooky  <dev@icthyophage>
+
+	* Fixed the inverted read words.  Basic functionality is better
+	now.
+
 2001-03-30  phooky  <dev@icthyophage>
 
 	* Added python script on top of Pyrite for adding hex files

@@ -193,7 +193,7 @@ int sx_read_chunk( UInt16* buffer, unsigned char length ) {
   }
   /* fill buffer */
   for ( i = 0; i < length; i++ ) {
-    buffer[i]=chunk[2*i] + (chunk[(2*i)+1] << 8);
+    buffer[i]=(chunk[2*i] << 8) + chunk[(2*i)+1];
   }
   return 0;
 }
