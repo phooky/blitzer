@@ -1,0 +1,82 @@
+#include "blitzerRsc.h"
+
+MENU ID MENU_MAIN
+BEGIN
+  PULLDOWN "Actions"
+  BEGIN
+    MENUITEM "Write to SX" ID MI_WRITE "W"
+    MENUITEM "Read from SX" ID MI_READ "R"
+    MENUITEM "Erase SX" ID MI_ERASE
+    MENUITEM "Reset SX" ID MI_RESET
+  END
+  PULLDOWN "Programs"
+  BEGIN
+    MENUITEM "Details..." ID MI_DETAILS "E"
+    MENUITEM "Delete" ID MI_DELETE "D"
+  END
+  PULLDOWN "Debug"
+  BEGIN
+    MENUITEM "Test serial port" ID MI_TEST_SERIAL
+    MENUITEM "Test SX-Blitz connection" ID MI_TEST_BLITZ
+  END
+END
+
+FORM ID FORM_MAIN AT (1 1 158 158) NOFRAME
+MENUID MENU_MAIN
+BEGIN
+  TITLE "Blitzer!"
+  LIST "a" "b" ID LIST_PROGS AT (0 15 158 121)
+  BUTTON "Read..." ID BU_READ AT (2 PrevBottom+2 AUTO AUTO)
+  BUTTON "Write" ID BU_WRITE AT (PrevRight+4 PrevTop AUTO AUTO)
+  BUTTON "Details..." ID BU_DETAILS AT (PrevRight+4 PrevTop AUTO AUTO)
+END
+
+FORM ID FORM_DETAILS AT (1 100 158 58) FRAME MODAL
+BEGIN
+  TITLE "Program Details"
+  LABEL "Name: " ID 1666 AT (2 15)
+  FIELD ID FIELD_NAME AT (2 PrevBottom+2 154 AUTO)
+        LEFTALIGN UNDERLINED SINGLELINE MAXCHARS 31
+  BUTTON "Close" ID BU_CLOSE AT (2 PrevBottom+2 AUTO AUTO)
+  BUTTON "Delete" ID BU_DELETE AT (PrevRight+4 PrevTop AUTO AUTO)
+END
+
+FORM ID FORM_PROGRESS AT (20 55 120 50) FRAME SAVEBEHIND
+BEGIN
+  LABEL "Operation in progress." ID 1666 AT (5 10)
+  LABEL "Please wait..." ID 1666 AT (5 27)
+END
+
+APPLICATIONICONNAME 1000 "blitzer!"
+ICON "img/blitzer.pbm"
+SMALLICON "img/blitzersmall.pbm"
+
+
+VERSION ID 2001 "0.0.1"
+
+ALERT ID ALERT_SERIAL_NOCLOSE ERROR
+BEGIN
+    TITLE "Alert!"
+    MESSAGE "Blitzer could open your serial port, but not close it.  Your serial port may still be open.  An open serial port can drain your batteries quickly.  Do a soft reset at the earliest opportunity."
+    BUTTONS "Panic!"
+END
+
+ALERT ID ALERT_GENERIC_ERROR ERROR
+BEGIN
+    TITLE "Operation failed."
+    MESSAGE "^1 failed: ^2"
+    BUTTONS "OK"
+END
+
+ALERT ID ALERT_GENERIC_SUCCESS INFORMATION
+BEGIN
+    TITLE "Operation succeeded."
+    MESSAGE "^1"
+    BUTTONS "OK"
+END
+
+STRINGTABLE ID STRTAB_ST_ERRORS ""
+"No Error."
+"Unable to open serial library."
+"Serial port already in use by another application."
+"Unknown serial error."
