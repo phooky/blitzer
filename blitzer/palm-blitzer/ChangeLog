@@ -1,0 +1,25 @@
+2001-03-30  phooky  <dev@icthyophage>
+
+	* Added python script on top of Pyrite for adding hex files
+	to the blitzerDB.
+
+	* Added progress dialog.
+
+2001-03-19  phooky  <dev@icthyophage>
+
+	* Changed many types.  Probably related to goofiness in my palm
+	dev environment.
+
+	* Basic programming now works correctly.
+
+2001-03-08  phooky  <dev@icthyophage>
+
+	* Cleaned up many of the calls and alert identifiers.
+
+	* Implemented basic programming ability: doesn't seem to work just
+	yet, but a step.
+
+	* Implemented erase and reset functionality.
+
+	* Added a ChangeLog.
+

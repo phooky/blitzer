@@ -1,0 +1,16 @@
+2001-03-19  phooky  <dev@icthyophage>
+
+	* Corrected hex.c; was reading FUSEX incorrectly.
+
+2001-03-08  phooky  <dev@icthyophage>
+
+	* Added a ChangeLog.
+
+	* Fixed a small bug in the type-detection code that would segfault
+	blitzer when no type was specified and no prefix was given.
+
+	* Merged in several changes from the PalmOS branch, moving out
+	some of the serial code to serial.h and making the chip data
+	non-global.
+	
+

@@ -1,0 +1,14 @@
+4/2/01
+This is the first release of palm-blitzer, a port of blitzer to the
+palm pilot.
+
+The script pbDB.py can be used to import files into the blitzer DB.
+You'll need the Pyrite package installed to use it.  Remember to run
+blitzer at least once before running pbDB.
+
+There's still no verify option.  I'm too lazy.  It Works Well Enough
+For Me.
+
+This is still unstable.  Be careful.
+
+-phooky
