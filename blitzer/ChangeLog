@@ -1,3 +1,8 @@
+2001-07-22  phooky  <dev@icthyophage>
+
+	* Sundry touches and wrapping up for a release.  Probably not
+	going to have to play with this code again for a while.
+
 2001-07-16  phooky  <dev@icthyophage>
 
 	* Added a verification (-V, --verify) option to verify that writes

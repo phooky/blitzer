@@ -1,3 +1,12 @@
+7/22/01
+Okay, this is probably the last update to blitzer for a while.  It
+does what it's supposed to do, and it works well enough that I can use
+it every day and not worry about it.
+
+The palmOS version is included in this source tarball as well.
+
+-p
+
 2/8/01
 This is the first release of Blitzer, a very simple program for
 driving Parallax's SX-Blitz programmer under Linux.
@@ -9,7 +18,8 @@ Options:
 -f, --format=id         use a specific file format
 -q, --quiet             suppress ordinary messages
 -v, --verbose           provide additional messages
-Modes:
+-V, --verify		verify writes (program operation only)
+odes:
 -p, --program=file      program SX from file
 -R, --reset             reset SX
 -e. --erase             erase SX
@@ -37,7 +47,5 @@ claims that the ID is *8 bytes*.  And there doesn't seem to be any
 mention of the ID words in the data sheets at all.  Blitzer seems to
 happily write and recover 16 full words of ID.  Can anyone shed any
 light on this?
-
-OK, bedtime.
 
 -phooky
