@@ -1,0 +1,43 @@
+2/8/01
+This is the first release of Blitzer, a very simple program for
+driving Parallax's SX-Blitz programmer under Linux.
+
+usage: blitzer [options] [mode]
+Options:
+-d, --device=name       name of serial port [/dev/ttyS0]
+-h, --help              display this message
+-f, --format=id         use a specific file format
+-q, --quiet             suppress ordinary messages
+-v, --verbose           provide additional messages
+Modes:
+-p, --program=file      program SX from file
+-R, --reset             reset SX
+-e. --erase             erase SX
+-r, --read=file         read SX to file
+Available file formats are: 
+hex     Intel Hex format
+raw     Raw hex characters
+
+Blitzer currently recognizes two file formats: Intel's hex format and
+its own simple raw hex format.
+
+The raw hex format simply consists of an unbroken series of
+hexidecimal triplets representing the code, id and fuses of the SX in
+the following order:  FUSEX, FUSE, CODE, ID.  Rawhex words are most
+significant byte first.  No assembler produces output like this; it's
+just for testing.  Try reading a few chips in raw mode to see what it
+looks like.
+
+The Intel hex format is based on some random documentation I found
+somewhere.  In this scheme, the address 0x1010 corresponds to FUSEX,
+0x1011 is FUSE, 0x0000-0x0FFF is code, and 0x1000-0x100F is ID.  I'm
+awfully confused by this.  The Blitz protocol doc claims that the ID
+is 16 WORDS, not 16 bytes.  The SX-Key programming guide actually
+claims that the ID is *8 bytes*.  And there doesn't seem to be any
+mention of the ID words in the data sheets at all.  Blitzer seems to
+happily write and recover 16 full words of ID.  Can anyone shed any
+light on this?
+
+OK, bedtime.
+
+-phooky

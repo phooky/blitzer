@@ -1,0 +1,334 @@
+/usr/local/mozilla/run-mozilla.sh /usr/local/mozilla/mozilla-bin
+MOZILLA_FIVE_HOME=/usr/local/mozilla
+  LD_LIBRARY_PATH=/usr/local/mozilla
+     LIBRARY_PATH=/usr/local/mozilla:/usr/local/mozilla/components
+       SHLIB_PATH=/usr/local/mozilla
+          LIBPATH=/usr/local/mozilla
+       ADDON_PATH=/usr/local/mozilla
+      MOZ_PROGRAM=/usr/local/mozilla/mozilla-bin
+      MOZ_TOOLKIT=
+        moz_debug=0
+     moz_debugger=
+Registering plugin 0 for: "*","All types",".*"
+Registering plugin 0 for: "application/x-shockwave-flash","Shockwave Flash","swf"
+Registering plugin 1 for: "application/futuresplash","FutureSplash Player","spl"
+*** PRE date = 372
+*** POST date = 394
+Document about:blank loaded successfully
+*** PRE date = 258
+*** POST date = 262
+Document http://unknownnews.pitas.com/ loaded successfully
+JavaScript error: 
+chrome://navigator/content/navigator.js line 613: node.getAttribute is not a function
+
+JavaScript error: 
+chrome://navigator/content/navigator.js line 613: node.getAttribute is not a function
+
+*** PRE date = 333
+*** POST date = 339
+Document http://www.genehack.org/ loaded successfully
+*** PRE date = 838
+*** POST date = 892
+Document http://www.lamborghini-tractors.com/eng/particolare_foto.cfm?ident_gamma=10&ident_foto=58 loaded successfully
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+*** PRE date = 135
+*** POST date = 144
+Document http://www.robotwisdom.com/ loaded successfully
+Error loading URL about:blank: 804b0002 
+Error loading URL http://search.news.yahoo.com/search/news?p=World+Press+Photo+contest&n=20&c=news_photos: 804b0002 
+*** PRE date = 91
+*** POST date = 96
+Document http://www.subgenius.com/ loaded successfully
+*** PRE date = 539
+*** POST date = 543
+Document http://www.subgenius.com/updates/updates.html loaded successfully
+Error loading URL about:blank: 804b0002 
+*** PRE date = 814
+*** POST date = 821
+Document http://www.subgenius.com/bigfist/fistclutch.html loaded successfully
+/usr/local/mozilla/run-mozilla.sh /usr/local/mozilla/mozilla-bin
+MOZILLA_FIVE_HOME=/usr/local/mozilla
+  LD_LIBRARY_PATH=/usr/local/mozilla
+     LIBRARY_PATH=/usr/local/mozilla:/usr/local/mozilla/components
+       SHLIB_PATH=/usr/local/mozilla
+          LIBPATH=/usr/local/mozilla
+       ADDON_PATH=/usr/local/mozilla
+      MOZ_PROGRAM=/usr/local/mozilla/mozilla-bin
+      MOZ_TOOLKIT=
+        moz_debug=0
+     moz_debugger=
+Registering plugin 0 for: "*","All types",".*"
+Registering plugin 0 for: "application/x-shockwave-flash","Shockwave Flash","swf"
+Registering plugin 1 for: "application/futuresplash","FutureSplash Player","spl"
+*** PRE date = 299
+*** POST date = 323
+Document about:blank loaded successfully
+*** PRE date = 613
+*** POST date = 617
+Document http://www.cnn.com/ loaded successfully
+Error loading URL about:blank: 804b0002 
+*** PRE date = 30
+*** POST date = 71
+Document http://www.cnn.com/2001/TECH/space/02/12/spacewalk.01/index.html loaded successfully
+*** PRE date = 421
+*** POST date = 457
+Document http://www.cnn.com/2001/SHOWBIZ/Music/02/12/eminem.elton/index.html loaded successfully
+JavaScript error: 
+chrome://navigator/content/navigator.js line 917: _content.focus is not a function
+
+*** PRE date = 143
+*** POST date = 150
+Document http://www.pigdog.org/ loaded successfully
+*** PRE date = 407
+*** POST date = 411
+Document http://www.memepool.com/ loaded successfully
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+*** PRE date = 723
+*** POST date = 737
+Document http://www.obscurestore.com/ loaded successfully
+Error loading URL about:blank: 804b0002 
+*** PRE date = 840
+*** POST date = 846
+Document http://www.harmu.net/h17_h.html loaded successfully
+*** PRE date = 820
+*** POST date = 825
+Document http://www.slashdot.org/ loaded successfully
+Error loading URL about:blank: 804b0002 
+*** PRE date = 426
+*** POST date = 433
+Document http://groups.google.com/ loaded successfully
+Error loading URL http://www.baloney.com/: 804b0002 
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+*** PRE date = 272
+*** POST date = 276
+Document http://www.baloney.com/ loaded successfully
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+*** PRE date = 935
+*** POST date = 8
+Document http://groups.google.com/groups?q=baloney&hl=en&lr=&safe=off&site=groups loaded successfully
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+************************************************************
+* Call to xpconnect wrapped JSObject produced this error:  *
+[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIPopupSetBoxObject.activeChild]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: chrome://global/content/xulBindings.xml#popups.activeChild (setter) :: onset :: line 6"  data: no]
+************************************************************
+*** PRE date = 470
+*** POST date = 474
+Document http://www.mozillazine.org/ loaded successfully
+*** PRE date = 901
+*** POST date = 905
+Document http://www.advogato.com/ loaded successfully
+Error loading URL about:blank: 804b0002 
+Error loading URL http://news.gnome.org/gnome-news/981746971/index_html: 804b0002 
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+*** PRE date = 407
+*** POST date = 414
+Document http://www.ximian.com/~jacob/aa/schweetfont.png loaded successfully
+*** PRE date = 136
+*** POST date = 140
+Document http://www.mozillazine.org/build_comments loaded successfully
+Error loading URL http://news.gnome.org/gnome-news/981746971/index_html: 804b0002 
+*** PRE date = 208
+*** POST date = 213
+Document http://www.ximian.com/~jacob/aa/AAbiword.png loaded successfully
+Error loading URL http://news.gnome.org/gnome-news/981746971/index_html: 804b0002 
+*** PRE date = 772
+*** POST date = 777
+Document http://www.ximian.com/~jacob/aa/moz_aa_3.png loaded successfully
+Error loading URL http://news.gnome.org/gnome-news/981746971/index_html: 804b0002 
+*** PRE date = 325
+*** POST date = 331
+Document http://www.ximian.com/~jacob/aa/oops.png loaded successfully
+Error loading URL about:blank: 804b0002 
+*** PRE date = 554
+*** POST date = 561
+Document http://www.advogato.com/article/241.html loaded successfully
+*** PRE date = 305
+*** POST date = 309
+Document http://www.advogato.com/article/242.html loaded successfully
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+Error loading URL http://www.openmpeg.org/join/: 804b0002 
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+/usr/local/mozilla/run-mozilla.sh /usr/local/mozilla/mozilla-bin
+MOZILLA_FIVE_HOME=/usr/local/mozilla
+  LD_LIBRARY_PATH=/usr/local/mozilla
+     LIBRARY_PATH=/usr/local/mozilla:/usr/local/mozilla/components
+       SHLIB_PATH=/usr/local/mozilla
+          LIBPATH=/usr/local/mozilla
+       ADDON_PATH=/usr/local/mozilla
+      MOZ_PROGRAM=/usr/local/mozilla/mozilla-bin
+      MOZ_TOOLKIT=
+        moz_debug=0
+     moz_debugger=
+Registering plugin 0 for: "*","All types",".*"
+Registering plugin 0 for: "application/x-shockwave-flash","Shockwave Flash","swf"
+Registering plugin 1 for: "application/futuresplash","FutureSplash Player","spl"
+*** PRE date = 952
+*** POST date = 995
+Document about:blank loaded successfully
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+*** PRE date = 503
+*** POST date = 510
+Document http://www.projectmayo.com/ loaded successfully
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+JavaScript error: 
+chrome://communicator/content/contentAreaUtils.js line 31: contentFrames has no properties
+
+*** PRE date = 322
+*** POST date = 327
+Document http://www.kuro5hin.org/ loaded successfully
+*** PRE date = 796
+*** POST date = 803
+Document http://www.brunching.com/ loaded successfully
+Error loading URL http://www.modernhumorist.com/: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines: 804b0002 
+*** PRE date = 354
+*** POST date = 358
+Document http://www.modernhumorist.com/mh/0102/valentines/1a.cfm loaded successfully
+*** PRE date = 548
+*** POST date = 552
+Document http://www.modernhumorist.com/mh/0102/valentines/2.cfm loaded successfully
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/2a.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/3.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/3a.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/4.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/4a.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/5.cfm: 804b0002 
+*** PRE date = 804
+*** POST date = 809
+Document http://www.modernhumorist.com/mh/0102/valentines/5a.cfm loaded successfully
+*** PRE date = 613
+*** POST date = 618
+Document http://www.modernhumorist.com/mh/0102/valentines/7.cfm loaded successfully
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/7a.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/8.cfm: 804b0002 
+Error loading URL http://www.modernhumorist.com/mh/0102/valentines/8a.cfm: 804b0002 
+*** PRE date = 227
+*** POST date = 232
+Document http://www.modernhumorist.com/mh/0102/valentines/9.cfm loaded successfully
+*** PRE date = 259
+*** POST date = 263
+Document http://www.modernhumorist.com/mh/0102/valentines/9a.cfm loaded successfully
+*** PRE date = 963
+*** POST date = 968
+Document http://www.modernhumorist.com/mh/0102/valentines/10.cfm loaded successfully
+*** PRE date = 397
+*** POST date = 406
+Document http://www.modernhumorist.com/mh/0102/valentines/10a.cfm loaded successfully
+*** PRE date = 233
+*** POST date = 238
+Document http://www.google.com/ loaded successfully
+Error loading URL http://www.deja.com/: 804b0002 
+*** PRE date = 766
+*** POST date = 778
+Document http://groups.google.com/groups?q=huffington&hl=en&lr=&safe=off&site=groups loaded successfully
+*** PRE date = 828
+*** POST date = 838
+Document http://groups.google.com/groups?q=huffington+buffy&hl=en&lr=&safe=off&site=groups loaded successfully
+*** PRE date = 946
+*** POST date = 955
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&site=groups loaded successfully
+*** PRE date = 859
+*** POST date = 869
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&rnum=7&seld=964228987&ic=1 loaded successfully
+*** PRE date = 113
+*** POST date = 123
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&site=groups loaded successfully
+*** PRE date = 556
+*** POST date = 565
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&rnum=8&seld=964229308&ic=1 loaded successfully
+*** PRE date = 474
+*** POST date = 484
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&site=groups loaded successfully
+*** PRE date = 858
+*** POST date = 870
+Document http://groups.google.com/groups?q=huffington+pollyanna&hl=en&lr=&safe=off&start=10&sa=N loaded successfully
+*** PRE date = 548
+*** POST date = 558
+Document http://groups.google.com/groups?q=huffington+pollyanna&start=10&hl=en&lr=&safe=off&rnum=16&seld=977909959&ic=1 loaded successfully
