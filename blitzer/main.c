@@ -48,6 +48,7 @@ void usage( FILE* f ) {
   fprintf(f, "-f, --format=id\t\tuse a specific file format\n");
   fprintf(f, "-q, --quiet\t\tsuppress ordinary messages\n");
   fprintf(f, "-v, --verbose\t\tprovide additional messages\n");
+  fprintf(f, "-V, --verify\t\tverify writes (program operation only)\n");
   fprintf(f, "Modes:\n");
   fprintf(f, "-p, --program=file\tprogram SX from file\n");
   fprintf(f, "-R, --reset\t\treset SX\n");
@@ -75,6 +76,7 @@ int main(int argc, char* argv[]) {
     { "format", 0, NULL, 'f' },
     { "quiet", 0, NULL, 'q' },
     { "verbose", 0, NULL, 'v' },
+    { "verify", 0, NULL, 'V' },
     { 0, 0, 0, 0 }
   };
   int ov;
@@ -86,8 +88,9 @@ int main(int argc, char* argv[]) {
   FILE* file_handle;
   int i;
   Chip* chip;
+  int verify = 0;
 
-  while ( (ov=getopt_long(argc,argv,"vqr:p:Rehd:f:",options,NULL)) >= 0 ) {
+  while ( (ov=getopt_long(argc,argv,"Vvqr:p:Rehd:f:",options,NULL)) >= 0 ) {
     switch(ov) {
     case 'h':
       usage(stdout);
@@ -98,6 +101,9 @@ int main(int argc, char* argv[]) {
       break;
     case 'v':
       debug++;
+      break;
+    case 'V':
+      verify++;
       break;
     case 'd':
       device_name = optarg;
@@ -137,7 +143,7 @@ int main(int argc, char* argv[]) {
   if ( mode == 'r' || mode == 'p' ) {
     if (!strcmp(file_name,"-")) {
       if ( format == NULL ) {
-	fprintf(stderr, "Need to specify format of stdin\n");
+	fprintf(stderr, "Need to specify format of stdin/stdout\n");
 	usage(stderr);
         exit(-1);
       }
@@ -236,6 +242,24 @@ int main(int argc, char* argv[]) {
     sx_erase();
     sx_program(chip);
     sx_reset();
+    if (verify) {
+      Chip* verification_image = (Chip*)malloc( sizeof(Chip) + sizeof(short) * 2048 );
+      int vms;
+      sx_end();
+      if (sx_connect()) {
+        fprintf(stderr,"Failed to reconnect for verification operation.\n");
+        return -1;
+      }
+      sx_read( verification_image );
+      sx_reset();
+      for (vms = 0; vms < chip->mem_size; vms++) {
+        if (chip->code[vms] != verification_image->code[vms]) {
+          fprintf(stderr, "Verification error: mistmatch at location %X.\n",vms);
+          return -1;
+        }
+      }
+      fprintf(stderr,"Verification succeeded-- no errors.\n");
+    }
     free(chip);
     break;
   }

@@ -1,3 +1,8 @@
+2001-07-16  phooky  <dev@icthyophage>
+
+	* Added a verification (-V, --verify) option to verify that writes
+	have been successful.
+
 2001-03-19  phooky  <dev@icthyophage>
 
 	* Corrected hex.c; was reading FUSEX incorrectly.
