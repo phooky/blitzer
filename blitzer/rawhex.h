@@ -20,8 +20,8 @@
 
 #include <stdio.h>
 
-int rawhexReadFile( FILE* file );
-int rawhexWriteFile( FILE* file );
+int rawhexReadFile( FILE* file, Chip* chip );
+int rawhexWriteFile( FILE* file, Chip* chip );
 
 #endif /*BLITZER_RAWHEX_H*/
 

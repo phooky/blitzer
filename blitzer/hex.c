@@ -32,7 +32,7 @@ int readByte( char** bptr ) {
   return (char2nibble(*((*bptr)++)) << 4) + char2nibble(*((*bptr)++));
 }
   
-int readLine( FILE* file ) {
+int readLine( FILE* file, Chip* chip ) {
   char buf[128];
   int address, length, type, i;
   char* bptr;
@@ -46,16 +46,16 @@ int readLine( FILE* file ) {
   switch (type) {
   case 0:
     if ( address < 0x1000 ) { /* CODE */
-      cptr = code + (address/2);
+      cptr = chip->code + (address/2);
       i = length;
     } else if (address >= 0x1000 && address < 0x1010 ) { /* ID */
-      cptr = id + ((address-0x1000)/2);
+      cptr = chip->id + ((address-0x1000)/2);
       i = length;
     } else if (address == 0x1010) {
-      cptr = &fuse;
+      cptr = &(chip->fuse);
       i = 2;
     } else if (address == 0x1011) {
-      cptr = &fusex;
+      cptr = &(chip->fusex);
       i = 2;
     } else return 1;
     while ( i ) {
@@ -74,15 +74,15 @@ int readLine( FILE* file ) {
   return 1;
 }
 
-int hexReadFile( FILE* file ) {
+int hexReadFile( FILE* file, Chip* chip ) {
   int rv, i;
-  mem_size = 2048;
-  fuse = 0x77F;
-  fusex = 0xFFF;
-  for ( i = 0; i < mem_size; i++ )
-    code[i] = 0x0FFF;
+  chip->mem_size = 2048;
+  chip->fuse = 0x77F;
+  chip->fusex = 0xFFF;
+  for ( i = 0; i < chip->mem_size; i++ )
+    chip->code[i] = 0x0FFF;
   
-  while ( rv=readLine( file ), rv > 0 );
+  while ( rv=readLine( file, chip ), rv > 0 );
 
   return rv;
 }
@@ -116,14 +116,14 @@ void writeEndLine( FILE* file ) {
   fprintf(file, ":00000001FF");
 }
 
-int hexWriteFile( FILE* file ) {
+int hexWriteFile( FILE* file, Chip* chip ) {
   int idx = 0;
-  while ( idx < mem_size ) {
-    writeLine(&code[ idx ], idx*2, 16, file);
+  while ( idx < chip->mem_size ) {
+    writeLine(&(chip->code[ idx ]), idx*2, 16, file);
     idx += 8;
   }
-  writeLine(&fuse, 0x1010, 2, file);
-  writeLine(&fuse, 0x1011, 2, file);
+  writeLine(&(chip->fuse), 0x1010, 2, file);
+  writeLine(&(chip->fusex), 0x1011, 2, file);
   writeEndLine(file);
   return 0;
 }

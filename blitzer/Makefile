@@ -1,5 +1,5 @@
 
-OBJS= blitz.o hex.o main.o rawhex.o
+OBJS= blitz.o hex.o main.o rawhex.o serial.o
 TARGET=blitzer
 CFLAGS= -g
 

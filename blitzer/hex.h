@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-int hexReadFile( FILE* file );
-int hexWriteFile( FILE* file );
+int hexReadFile( FILE* file, Chip* chip );
+int hexWriteFile( FILE* file, Chip* chip );
 
 #endif /*BLITZER_HEX_H*/

@@ -36,24 +36,24 @@ unsigned short fgetword( FILE* file ) {
     hexchar(buf[2]);
 }
 
-int rawhexReadFile( FILE* file ) {
+int rawhexReadFile( FILE* file, Chip* chip ) {
   int i;
-  mem_size =2048;
-  fusex = fgetword( file );
-  fuse = fgetword( file );
-  for ( i = 0; i < mem_size; i++ ) code[i] = fgetword( file );
-  for ( i = 0; i < 16; i++ ) id[i] = fgetword( file );
+  chip->mem_size =2048;
+  chip->fusex = fgetword( file );
+  chip->fuse = fgetword( file );
+  for ( i = 0; i < chip->mem_size; i++ ) chip->code[i] = fgetword( file );
+  for ( i = 0; i < 16; i++ ) chip->id[i] = fgetword( file );
   return 0;
 }
 
-int rawhexWriteFile( FILE* file ) {
+int rawhexWriteFile( FILE* file, Chip* chip ) {
   int i;
-  fprintf(file,"%03X", fusex);
-  fprintf(file,"%03X", fuse);
-  for ( i = 0; i < mem_size; i++ )
-    fprintf(file,"%03X", code[i]);
+  fprintf(file,"%03X", chip->fusex);
+  fprintf(file,"%03X", chip->fuse);
+  for ( i = 0; i < chip->mem_size; i++ )
+    fprintf(file,"%03X", chip->code[i]);
   for ( i = 0; i < 16; i++ )
-      fprintf(file,"%03X", id[i]);
+      fprintf(file,"%03X", chip->id[i]);
   return 0;
 }
 

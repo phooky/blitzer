@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 #include "blitz.h"
+#include "serial.h"
 #include "hex.h"
 #include "rawhex.h"
 #include <getopt.h>
@@ -29,8 +30,8 @@
 struct format {
   char* suffix;
   char* description;
-  int (*readFile)(FILE* file);
-  int (*writeFile)(FILE* file);
+  int (*readFile)(FILE* file, Chip* chip);
+  int (*writeFile)(FILE* file, Chip* chip);
 };
 
 struct format formats[] = {
@@ -84,6 +85,7 @@ int main(int argc, char* argv[]) {
   struct format* format = NULL;
   FILE* file_handle;
   int i;
+  Chip* chip;
 
   while ( (ov=getopt_long(argc,argv,"vqr:p:Rehd:f:",options,NULL)) >= 0 ) {
     switch(ov) {
@@ -143,10 +145,15 @@ int main(int argc, char* argv[]) {
     } else {
       if ( format == NULL ) {
 	struct format* fmt = formats;
-	char* suffix = strrchr( file_name, '.') + 1;
+	char* suffix = strrchr( file_name, '.');
+        if (suffix == NULL) {
+          fprintf(stderr, "No format specified and no suffix supplied.  Aborting.\n");
+          usage(stderr);
+          exit(-1);
+        }
+        suffix++;
         if (debug >= DEBUG_VERBOSE) 
           fprintf( stderr, "No format specified, looking for suffix %s\n", suffix );
-        
 	while ( fmt->suffix ) {
 	  if (!strcasecmp( fmt->suffix, suffix )) {
 	    format = fmt; break;
@@ -197,7 +204,8 @@ int main(int argc, char* argv[]) {
   switch (mode) {
 
   case 'r':
-    sx_read();
+    chip = (Chip*)malloc( sizeof(Chip) + sizeof(short) * 2048 );
+    sx_read(chip);
     sx_reset();
 
     if (!strcmp(file_name,"-")) {
@@ -209,8 +217,9 @@ int main(int argc, char* argv[]) {
       }
     }
     // write to file
-    format->writeFile( file_handle );
+    format->writeFile( file_handle, chip );
     if ( file_handle != stdout ) fclose( file_handle );
+    free(chip);
     break;
   case 'R':
     sx_reset();
@@ -220,12 +229,14 @@ int main(int argc, char* argv[]) {
     break;
   case 'p':
     // program
+    chip = (Chip*)malloc( sizeof(Chip) + sizeof(short) * 2048 );
     // read from file
-    format->readFile( file_handle );
+    format->readFile( file_handle, chip );
     if ( file_handle != stdout ) fclose( file_handle );
     sx_erase();
-    sx_program();
+    sx_program(chip);
     sx_reset();
+    free(chip);
     break;
   }
 

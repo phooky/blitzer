@@ -16,18 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 #include "blitz.h"
+#include "serial.h"
 
-int port_handle = -1;
 int version = 0;
-
 int debug = DEBUG_NORMAL;
-
-unsigned short device;
-unsigned short fusex;
-unsigned short fuse;
-unsigned int mem_size;
-unsigned short code[2048];
-unsigned short id[16];
 
 /* Command for establishing connection with the SX-Blitz */
 unsigned char connect_str[] = {
@@ -65,16 +57,6 @@ unsigned char* decode_response( int response ) {
   return "Unrecognized response code";
 }
 
-int blitz_recv( unsigned char* buffer, int length ) {
-  int last = 1;
-  int count = 0;
-  while (last && count<length) {
-    last = read( port_handle, buffer + count, length - count);
-    count += last;
-  }
-  return count;
-}
-
 /* Fill a buffer with its bytewise 2's complement */
 void twos_comp_buffer( unsigned char* buffer, int length ) {
   while(length--) {
@@ -94,12 +76,6 @@ int blitz_recv_tc( unsigned char* buffer, int length ) {
   return i;
 }
   
-int blitz_send( unsigned char* buffer, int length ) {
-  int i = write( port_handle, buffer, length );
-  if ( i != length ) return i;
-  return blitz_recv( buffer, length );
-}
-
 /* Macro for reading a small-endian word from a buffer */
 #define READ_WORD(buffer) ( (unsigned int)*(buffer++) | ((unsigned int)*(buffer++) << 8) )
 
@@ -221,10 +197,9 @@ int sx_read_chunk( unsigned short* buffer, unsigned char length ) {
   return 0;
 }
 
-int sx_read() {
+int sx_read( Chip* chip ) {
   unsigned char command_code = 0x03;
   unsigned char response_code;
-  unsigned short device;
   int i;
 
   if ((i=blitz_send(&command_code, 1)) != 1) {
@@ -240,25 +215,25 @@ int sx_read() {
       fprintf(stderr, "Bad response code: %d/%s.\n", response_code, decode_response(response_code) );
     return -1;
   }
-  sx_read_chunk( &device, 1 );
-  sx_read_chunk( &fusex, 1 );
-  sx_read_chunk( &fuse, 1 );
-  switch( device ) {
+  sx_read_chunk( &(chip->device), 1 );
+  sx_read_chunk( &(chip->fusex), 1 );
+  sx_read_chunk( &(chip->fuse), 1 );
+  switch( chip->device ) {
   case 0x0FCE:
-    switch( fusex & FX_MEMORY_BITS ) {
+    switch( chip->fusex & FX_MEMORY_BITS ) {
     case 0x0:
-      mem_size = 512; break;
+      chip->mem_size = 512; break;
     case 0x01:
-      mem_size = 1024; break;
+      chip->mem_size = 1024; break;
     case 0x02:
     case 0x03:
-      mem_size = 2048; break;
+      chip->mem_size = 2048; break;
     }
     if (debug >= DEBUG_NORMAL)
-      fprintf( stdout, "Device is SX20/28 (code size:%d)\n", mem_size );
+      fprintf( stdout, "Device is SX20/28 (code size:%d)\n", chip->mem_size );
     {
-      int ms = mem_size;
-      unsigned short* cptr = code;
+      int ms = chip->mem_size;
+      unsigned short* cptr = chip->code;
       while ( ms >= 128 ) {
 	sx_read_chunk( cptr, 128 ); cptr += 128; ms -= 128;
         if (debug >= DEBUG_VERBOSE)
@@ -269,7 +244,7 @@ int sx_read() {
       }
 
     }
-    sx_read_chunk( id, 16 );
+    sx_read_chunk( chip->id, 16 );
     break;
   default:
     fprintf( stderr, "Device not recognized.  Sorry; Blitzer doesn't currently support this SX chip.\n" );
@@ -347,10 +322,9 @@ int sx_write_chunk( unsigned short* buffer, unsigned char length ) {
   return 0;
 }
 
-int sx_program() {
+int sx_program( Chip* chip ) {
   unsigned char command_code = 0x02;
   unsigned char response_code;
-  unsigned short device;
   int i;
 
   if ((i=blitz_send(&command_code, 1)) != 1) {
@@ -366,24 +340,24 @@ int sx_program() {
     return -1;
   }
 
-  if (sx_write_chunk( &fusex, 1 ) < 0) {
-    fprintf(stderr,"Could not write FUSEX\n");
+  if (sx_write_chunk( &(chip->fusex), 1 ) < 0) {
+    fprintf(stderr,"Could not write FUSEX.\n");
     return -1;
   }
-  if (sx_write_chunk( &fuse, 1 ) < 0) {
+  if (sx_write_chunk( &(chip->fuse), 1 ) < 0) {
     fprintf(stderr,"Could not write FUSE\n");
     return -1;
   }
   if (debug >= DEBUG_VERBOSE)
-    fprintf(stdout," wrote FUSEX %03X FUSE %03X\n", fusex, fuse );
+    fprintf(stdout," wrote FUSEX %03X FUSE %03X\n", chip->fusex, chip->fuse );
   {
-    int ms = mem_size;
-    unsigned short* cptr = code;
+    int ms = chip->mem_size;
+    unsigned short* cptr = chip->code;
     int retry = 0;
     while ( ms >= 32 ) {
       if (sx_write_chunk( cptr, 32 ) == -1) {
         if ( retry > 12 ) {
-          fprintf(stderr, "Gave up on write.  Left:%4d/%4d\n", ms, mem_size);
+          fprintf(stderr, "Gave up on write.  Left:%4d/%4d\n", ms, chip->mem_size);
           return -1;
         }
         if (debug >= DEBUG_VERBOSE)
@@ -393,7 +367,7 @@ int sx_program() {
       else {
 	cptr += 32; ms -= 32; retry = 0;
         if (debug >= DEBUG_VERBOSE)
-          fprintf(stdout, "wrote chunk, left: %4d/%4d\n", ms, mem_size);
+          fprintf(stdout, "wrote chunk, left: %4d/%4d\n", ms, chip->mem_size);
       }
     }
     if (ms) {
@@ -401,7 +375,7 @@ int sx_program() {
     }
 
   }
-  if (sx_write_chunk( id, 16 ) < 0) {
+  if (sx_write_chunk( chip->id, 16 ) < 0) {
     fprintf(stderr,"Could not write ID\n");
     return -1;
   }

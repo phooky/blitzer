@@ -34,7 +34,6 @@
 int sx_connect();
 int sx_disconnect();
 
-extern int port_handle;
 extern int version;
 
 enum {
@@ -46,18 +45,22 @@ enum {
 extern int debug;
 
 #define FX_MEMORY_BITS 0x0003
-    
-extern unsigned short device;
-extern unsigned short fusex;  
-extern unsigned short fuse;
-extern unsigned int mem_size;
-extern unsigned short code[];
-extern unsigned short id[16];
+
+typedef struct {
+  unsigned short device;
+  unsigned short fusex;  
+  unsigned short fuse;
+  unsigned int mem_size;
+  unsigned short id[16];
+  unsigned short code[0];
+} Chip;
+
+int sx_connect();
 
 int sx_end();
 int sx_erase();
-int sx_program();
-int sx_read();
+int sx_program( Chip* chip );
+int sx_read( Chip* chip );
 int sx_reset();
 
 #endif /*BLITZER_BLITZ_H*/
