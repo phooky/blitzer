@@ -73,6 +73,11 @@ int readLine( FILE* file, Chip* chip ) {
     return 0;
   case 2:
     return 1;
+      case 4:
+          if (debug >= DEBUG_NORMAL)
+              fprintf(stdout,"Ignoring extended linear address directive.\n");
+          return 1;
+          
   default:
     return -1;
   }
